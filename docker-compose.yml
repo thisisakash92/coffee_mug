@@ -1,0 +1,22 @@
+psql_db:
+  image: postgres:10.1
+  ports:
+    - "27017"
+  environment:
+      POSTGRES_PASSWORD: "coffee_mug"
+      POSTGRES_USER: "coffee_mug"
+      POSTGRES_DB: "coffee_mug"
+
+codebase:
+  build: .
+  volumes:
+    - ./:/coffee_mug
+
+runner:
+  extends:
+    service: codebase
+  links:
+    - psql_db
+  command: python3 manage.py runserver 0.0.0.0:8000
+  ports:
+    - "8000:8000"
