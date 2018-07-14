@@ -13,7 +13,7 @@ MAINTAINER Akash Sarang thisisakash92@yahoo.com
 RUN mkdir /coffee_mug
 
 # Make static root directory
-RUN mkdir /static
+RUN mkdir /coffee_mug/staticfiles
 
 # Copy code to docker directory
 COPY ./ /coffee_mug/
